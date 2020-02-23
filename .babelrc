@@ -1,0 +1,11 @@
+{
+    "presets": ["@babel/env", "@babel/react"],
+    "plugins": [
+        ["module-resolver", {
+            "root": ["./src"],
+            "alias": {
+                "test": "./test_no_such_directory"
+            }
+        }]
+    ]
+}

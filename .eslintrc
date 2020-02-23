@@ -1,0 +1,52 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "airbnb",
+        "plugin:import/errors",
+        "plugin:import/warnings"
+    ],
+    "env": {
+        "browser": true,
+        "node": true,
+        "jest": true,
+        "commonjs": true
+    },
+    "plugins": [
+        "react-hooks"
+    ],
+    "rules": {
+        "arrow-parens": "off",
+        "array-bracket-spacing": "off",
+        "comma-dangle": "off",
+        "import/prefer-default-export": "off",
+        "indent": ["error", 4],
+        "no-case-declarations": "off",
+        "no-console": "off",
+        "no-multi-spaces", ["warn", { "ignoreEOLComments": true }],
+        "no-nested-ternary": "off",
+        "no-param-reassign": "off",
+        "no-unused-vars": "warn",
+        "object-curly-newline": "off",
+        "object-curly-spacing": "off",
+        "operator-linebreak": ["error", "after"],
+        "padded-blocks": "off",
+        "space-infix-ops": "off",
+        "spaced-comment": "off",
+
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "off",
+
+        "react/jsx-closing-bracket-location": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-first-prop-new-line": "off",
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-tag-spacing": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "babel-module": {}
+        }
+    }    
+}

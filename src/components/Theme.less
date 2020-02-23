@@ -1,0 +1,84 @@
+
+/* Theme Variables */
+
+@themeFontFamily: Arial;
+
+@themeLabelColor: #2f2f2f;
+@themeLabelFontSize: 12pt;
+
+@themeInputColor: #2f2f2f;
+@themeInputFontSize: 12pt;
+
+
+/* Theme Defaults */
+
+.theme-layout-parent {
+    /* So don't need to subract padding from 100% width/height. */
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+
+    /* Default flex-box vertical layout. */
+    display: flex;
+    flex-direction: column;
+}
+
+.theme-layout-child-grow-shrink {
+    /* So don't need to subract padding from 100% width/height. */
+    box-sizing: border-box;
+    
+    /* Use 100% of the remaining height in the flex-box parent. */
+    height: inherit;
+    width: inherit;
+}
+
+.theme-app {
+    .theme-layout-parent;
+    font-family: @themeFontFamily;
+}
+
+.theme-label {
+    color: @themeLabelColor;
+    font-size: @themeLabelFontSize;
+    text-overflow: ellipsis;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.theme-label-superscript {
+    .theme-label;
+    font-size: 12pt;
+    vertical-align: top;
+}
+
+.theme-input {
+}
+
+.theme-input-text {
+    .theme-input;
+    background: white;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    color: @themeInputColor;
+    font-size: @themeInputFontSize;
+    padding: 4px 8px;
+}
+
+.theme-button {
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.theme-button-primary {
+    .theme-button;
+    background: #0077cc;
+    border: 2px solid #0077cc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(40,40,40,0.2);
+    color: white;
+}
+
+.theme-button-primary-hover {
+    background: #0066bb;
+    border: 2px solid #0066bb;
+}
