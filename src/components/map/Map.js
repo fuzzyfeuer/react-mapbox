@@ -12,9 +12,11 @@ const initalValues = {
     lng: -2.36,
     zoom: 14
     */
-    lat: 59.15,
-    lng: -3.1416,
-    zoom: 6
+
+    /* North Scotland */
+    lat: 58.99,
+    lng: -2.94,
+    zoom: 8
 };
 
 /**
@@ -53,21 +55,24 @@ function Map() {
 
         // load geojson
         mbMap.on('load', () => {
+            const cableSourceId = 'src:cableLines';
+            const cableLayerId = 'layer:cableLines';
+
             mbMap.addControl(new mapboxgl.NavigationControl());
 
             const mapSource = {
                 type: 'geojson',
                 data: exampleGeoJson
             };
-            mbMap.addSource('src:cableLines', mapSource);
+            mbMap.addSource(cableSourceId, mapSource);
 
             const baseWidth = 2;
             const baseZoom = 6;
 
             mbMap.addLayer({
-                id: 'layer:cableLines',
+                id: cableLayerId,
                 type: 'line',
-                source: 'src:cableLines',
+                source: cableSourceId,
                 paint: {
                     // Use a get expression (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-get)
                     // to set the line-color to a feature property value.
@@ -84,8 +89,6 @@ function Map() {
                         stops: [
                             [0, baseWidth * (2 ** (0 - baseZoom))],
                             [24, baseWidth * (2 ** (24 - baseZoom))]
-                            //[0, baseWidth * Math.pow(2, (0 - baseZoom))],
-                            //[24, baseWidth * Math.pow(2, (24 - baseZoom))]
                         ]
                     }
                 },
@@ -93,6 +96,29 @@ function Map() {
                     'line-cap': 'butt',    // 'round'
                     'line-join': 'round'   // 'miter'
                 }
+            });
+
+
+            // mouse click
+            mbMap.on('mouseup', (e) => {    // mousedown, mouseup, click
+                console.info(`e.point: ${JSON.stringify(e.point)}`);
+
+                const offset = 8;
+                const pointBox = [
+                    [e.point.x - offset, e.point.y - offset],
+                    [e.point.x + offset, e.point.y + offset]
+                ];
+
+                const features = mbMap.queryRenderedFeatures(/*e.point*/ pointBox, {
+                    layers: [cableLayerId]
+                });
+                console.info(`Click: ${features.length}`);
+
+                features.forEach((f) => {
+                    if (f && f.layer && f.properties) {
+                        console.info(`Feature: ${f.layer.id} | ${f.properties.slug}`);
+                    }
+                });
             });
         });
     };
