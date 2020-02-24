@@ -9,8 +9,9 @@ function MapInfo({ values }) {
 
     return (
         <div className="ff-map-info">
-            (Lat <span>{lat}</span>, Long <span>{lng}</span>)&nbsp;
-            Zoom <span>{zoom}</span>
+            (Lat <span>{lat.toFixed(4)}</span>,&nbsp;
+            Long <span>{lng.toFixed(4)}</span>)&nbsp;
+            Zoom <span>{zoom.toFixed(4)}</span>
         </div>
     );
 }
