@@ -31,10 +31,13 @@ function Map() {
     const prepareMapbox = () => {
         console.info('Map | Preparing Mapbox.');
 
+        //const styleUrl = 'mapbox://styles/mapbox/streets-v11';
+        const styleUrl = 'mapbox://styles/fuzzyfeuer/ck7253a9i10yk1iqwwak1tusc';
+
         // create the map
         const mbMap = new mapboxgl.Map({
             container: mapDiv.current,
-            style: 'mapbox://styles/mapbox/streets-v11',
+            style: styleUrl,
             center: [values.lng, values.lat],
             zoom: values.zoom,
             antialias: true
