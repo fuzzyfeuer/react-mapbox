@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
-import exampleGeoJson from 'geojson/example-cables-geo.json';
+import exampleCablesGeo from 'geojson/example-cables-geo.json';
+import exampleLandingGeo from 'geojson/example-landing-points-geo.json';
 import MapInfo from './MapInfo';
 import './Map.less';
 
@@ -35,7 +36,8 @@ function Map() {
             container: mapDiv.current,
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [values.lng, values.lat],
-            zoom: values.zoom
+            zoom: values.zoom,
+            antialias: true
         });
         setMap(mbMap);
 
@@ -57,17 +59,25 @@ function Map() {
         mbMap.on('load', () => {
             const cableSourceId = 'src:cableLines';
             const cableLayerId = 'layer:cableLines';
+            const landingSourceId = 'src:landingPoints';
+            const landingLayerId = 'layer:landingPoints';
 
             mbMap.addControl(new mapboxgl.NavigationControl());
 
-            const mapSource = {
+            const mapSource1 = {
                 type: 'geojson',
-                data: exampleGeoJson
+                data: exampleCablesGeo
             };
-            mbMap.addSource(cableSourceId, mapSource);
+            mbMap.addSource(cableSourceId, mapSource1);
 
-            const baseWidth = 2;
-            const baseZoom = 6;
+            const mapSource2 = {
+                type: 'geojson',
+                data: exampleLandingGeo
+            };
+            mbMap.addSource(landingSourceId, mapSource2);
+
+            //const baseWidth = 2;
+            //const baseZoom = 6;
 
             mbMap.addLayer({
                 id: cableLayerId,
@@ -78,19 +88,19 @@ function Map() {
                     // to set the line-color to a feature property value.
                     'line-color': ['get', 'color'],
                     'line-opacity': 0.8,
-                    // 'line-width': 5
+                    'line-width': 5
 
                     // Change the line width with the zoom level.
                     // https://gis.stackexchange.com/questions/259407/
                     //   style-line-width-proportionally-to-maintain-relative-size-in-mapbox-gl
-                    'line-width': {
-                        type: 'exponential',
-                        base: 2,
-                        stops: [
-                            [0, baseWidth * (2 ** (0 - baseZoom))],
-                            [24, baseWidth * (2 ** (24 - baseZoom))]
-                        ]
-                    }
+                    //'line-width': {
+                    //    type: 'exponential',
+                    //    base: 2,
+                    //    stops: [
+                    //        [0, baseWidth * (2 ** (0 - baseZoom))],
+                    //        [24, baseWidth * (2 ** (24 - baseZoom))]
+                    //    ]
+                    //}
                 },
                 layout: {
                     'line-cap': 'butt',    // 'round'
@@ -98,6 +108,24 @@ function Map() {
                 }
             });
 
+            mbMap.addLayer({
+                id: landingLayerId,
+                type: 'circle',
+                source: landingSourceId,
+                minzoom: 5,
+                paint: {
+                    // make circles larger as the user zooms from z12 to z22
+                    //'circle-radius': {
+                    //    base: 4,
+                    //    stops: [[2, 4], [12, 128]]
+                    //},
+                    'circle-radius': 4,
+                    'circle-color': '#f0f0f0',
+                    'circle-opacity': 0.8,
+                    'circle-stroke-width': 1.5,
+                    'circle-stroke-color': '#0a0a0a'
+                }
+            });
 
             // mouse click
             mbMap.on('mouseup', (e) => {    // mousedown, mouseup, click
@@ -110,13 +138,15 @@ function Map() {
                 ];
 
                 const features = mbMap.queryRenderedFeatures(/*e.point*/ pointBox, {
-                    layers: [cableLayerId]
+                    layers: [landingLayerId, cableLayerId]
                 });
                 console.info(`Click: ${features.length}`);
 
+                // TODO - remove duplicate features !
+
                 features.forEach((f) => {
                     if (f && f.layer && f.properties) {
-                        console.info(`Feature: ${f.layer.id} | ${f.properties.slug}`);
+                        console.info(`Feature: ${f.layer.id} | ${f.properties.id} | ${f.properties.name}`);
                     }
                 });
             });

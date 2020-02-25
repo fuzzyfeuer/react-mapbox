@@ -27,8 +27,10 @@
         ]
       },
       "properties": {
-        "color": "#b4c235",
-        "slug": "northern-lights"
+        "id": "northern-lights",
+        "name": "Northern Lights",
+        "geoType": "Cable",
+        "color": "#b4c235"
       }
     },
     {
@@ -119,8 +121,10 @@
         ]
       },
       "properties": {
-        "color": "#cb2127",
-        "slug": "shefa-2"
+        "id": "shefa-2",
+        "name":"SHEFA-2",
+        "geoType": "Cable",
+        "color": "#cb2127"
       }
     }
 

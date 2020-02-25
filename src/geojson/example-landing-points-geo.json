@@ -1,0 +1,124 @@
+{
+    "type": "FeatureCollection",
+    "features": [{
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-3.376579, 58.670331]
+        },
+        "properties": {
+            "id": "dunnet-head-united-kingdom",
+            "name": "Dunnet Head, United Kingdom",
+            "geoType": "LandingPoint",
+            "geoParentId": "northern-lights",
+            "geoParentType": "Cable"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-3.354948, 59.051459]
+        },
+        "properties": {
+            "id": "skaill-united-kingdom",
+            "name": "Skaill, United Kingdom",
+            "geoType": "LandingPoint",
+            "geoParentId": "northern-lights",
+            "geoParentType": "Cable"
+        }
+    },
+
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-2.900114, 58.833270]
+        },
+        "properties": {
+            "id": "ayre-of-cara-united-kingdom",
+            "name": "Ayre of Cara, United Kingdom",
+            "geoType": "LandingPoint",
+            "geoParentId": "shefa-2",
+            "geoParentType": "Cable"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-2.294927, 60.441045]
+        },
+        "properties": {
+            "id": "bp-clair-ridge-united-kingdom",
+            "name": "BP Clair Ridge, United Kingdom",
+            "geoType": "LandingPoint",
+            "geoParentId": "shefa-2",
+            "geoParentType": "Cable"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-2.523650, 57.666864]
+        },
+        "properties": {
+            "id": "banff-united-kingdom",
+            "name": "Banff, United Kingdom",
+            "geoType": "LandingPoint",
+            "geoParentId": "shefa-2",
+            "geoParentType": "Cable"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-4.333414, 60.333074]
+        },
+        "properties": {
+            "id": "glen-lyon-united-kingdom",
+            "name": "Glen Lyon, United Kingdom",
+            "geoType": "LandingPoint",
+            "geoParentId": "shefa-2",
+            "geoParentType": "Cable"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.323797, 60.003985]
+        },
+        "properties": {
+            "id": "maywick-united-kingdom",
+            "name": "Maywick, United Kingdom",
+            "geoType": "LandingPoint",
+            "geoParentId": "shefa-2",
+            "geoParentType": "Cable"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-1.238689, 59.995977]
+        },
+        "properties": {
+            "id": "sandwick-united-kingdom",
+            "name": "Sandwick, United Kingdom",
+            "geoType": "LandingPoint",
+            "geoParentId": "shefa-2",
+            "geoParentType": "Cable"
+        }
+    }, {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-6.771841, 62.017461]
+        },
+        "properties": {
+            "id": "torshavn-faroe-islands",
+            "name": "Torshavn, Faroe Islands",
+            "geoType": "LandingPoint",
+            "geoParentId": "shefa-2",
+            "geoParentType": "Cable"
+        }
+    }
+]
+}
